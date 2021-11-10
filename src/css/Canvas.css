@@ -1,0 +1,26 @@
+canvas{
+    background-color:none;
+    margin: 0 auto;
+}
+
+.canvas-section{
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+}
+
+.canvas-section button{
+    width: 200px;
+    margin: 10px auto;
+    border-radius: 5px;
+    background-color: #0275d8;
+    border: none;
+    color: white;
+}
+
+.canvas-section button:hover{
+    background-color: darkslategrey;
+    color:white;
+
+}
+

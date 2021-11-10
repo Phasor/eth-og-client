@@ -1,0 +1,43 @@
+@import 'Nav.css';
+@import 'Main.css';
+@import 'MetaMaskButton.css';
+@import 'Footer.css';
+@import 'Canvas.css';
+@import 'Mint.css';
+
+/* generic site styles */
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+#root{
+  background-color: rgba(42, 181, 170);
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 25px;
+  background-color: rgba(42, 181, 170);
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(42, 181, 170);
+}
+
+.mr-1 {
+  margin-right: 5px;
+}
+
+.mr-2 {
+  margin-right: 10px;
+}
+
+.mr-3 {
+  margin-right: 15px;
+}

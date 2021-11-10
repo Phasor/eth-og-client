@@ -1,0 +1,38 @@
+
+.main{
+    background-color: rgba(42, 181, 170);
+    width:100%
+}
+.main-container{
+    width: 500px;
+    min-height: 1000px;
+    margin:0 auto;
+    margin-top: 100px;
+}
+
+.main-container button{
+    width: 200px;
+    margin: 10px auto;
+    border-radius: 5px;
+    background-color: #0275d8;
+    border: none;
+    color: white;
+}
+
+.main-container button:hover{
+  
+    background-color: darkslategrey;
+    color:white;
+ 
+}
+
+.main-container figure{
+    margin: 0 auto;
+    padding:0;
+}
+
+.text-highlight{
+    color: white;
+    font-size: 23px;
+    margin-left: 10px;
+}

@@ -1,0 +1,14 @@
+.nav{
+    background-color: rgba(42, 181, 170);
+    width: 100%;
+}
+
+.nav-container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content:flex-end;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
