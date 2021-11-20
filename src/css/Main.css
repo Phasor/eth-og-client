@@ -10,21 +10,6 @@
     margin-top: 100px;
 }
 
-.main-container button{
-    width: 200px;
-    margin: 10px auto;
-    border-radius: 5px;
-    background-color: #0275d8;
-    border: none;
-    color: white;
-}
-
-.main-container button:hover{
-  
-    background-color: darkslategrey;
-    color:white;
- 
-}
 
 .main-container figure{
     margin: 0 auto;

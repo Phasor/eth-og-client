@@ -8,6 +8,8 @@ import Footer from './Footer';
 
 //pull in .env variables
 require('dotenv').config();
+//console.log(process.env.REACT_APP_INFURA_API_KEY);
+//console.log(process.env.REACT_APP_MNEMONIC);
 
 function getLibrary(provider) {
   return new ethers.providers.Web3Provider(provider);

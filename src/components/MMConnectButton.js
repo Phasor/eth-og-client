@@ -15,7 +15,6 @@ const MetamaskLogo = styled.img.attrs({
 const MMConnectButton = (props) => {
     const { activate, active, account, deactivate } = useWeb3React();
 
-
     if (active) {
         return (
             <div className='MM-button-container'>

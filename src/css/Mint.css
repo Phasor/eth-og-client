@@ -18,5 +18,9 @@
 .mint-section button:hover{
     background-color: darkslategrey;
     color:white;
+}
 
+.mint-section button:active{
+    background-color: black;
+    color:white;
 }
