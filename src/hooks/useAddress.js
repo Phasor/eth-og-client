@@ -78,14 +78,9 @@ const useAddress = () => {
         try {
             const response = await fetch(API_URL);
             const firstTransaction = await response.json();
-            //console.log(firstTransaction)
             const firstBlock = firstTransaction.result[0].blockNumber;
-            //console.log(typeof firstBlock);
             setFirstBlockNumber(firstBlock);
             getFirstYear(parseFloat(firstBlock));
-            //console.log(firstYear);
-            //console.log(typeof firstYear);
-            //setIsLoading(false);
 
             //get date of transaction
             const dateObj = new Date((firstTransaction.result[0].timeStamp) * 1000);
@@ -105,14 +100,11 @@ const useAddress = () => {
 
     //call Etherscan API
     useEffect(() => {
-        //call etherscan API
-        //console.log(etherscanURL);
         fetchFirstBlock(etherscanURL)
     }, [etherscanURL])
 
 
     return { firstBlockNumber, firstBlockDate, isError, isLoading, isDataLoaded, firstYear };
-
 };
 
 export default useAddress;

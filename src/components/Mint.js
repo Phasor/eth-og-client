@@ -8,12 +8,14 @@ import ABI from '../abi';
 export default function Mint({ finalImage, firstYear }) {
     const { account, active } = useWeb3React();
     const { uploadMetaData } = useUploader();
-    //const ContractAddress = '0x429Fb81c6Eb449303da7a51fbE077B4859eAf41a'; // Rinkeby
-    const ContractAddress = '0xf4334E805236f17E5bE81911B9a587F7A2E75891'; // Rinkeby
+    const ContractAddress = '0x5560ECeDd9F72f5b74BaAE7A4edE487579f216cA'; // Rinkeby
     const mintContract = useContract(ContractAddress, ABI);
     const [isLoading, setIsLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [currentSupply, setCurrentSupply] = useState(0);
+    const [txHash, setTxHash] = useState('');
+
+    const etherScanBase = 'https://rinkeby.etherscan.io/tx/'
 
     useEffect(() => {
         //get current total supply
@@ -22,7 +24,7 @@ export default function Mint({ finalImage, firstYear }) {
             setCurrentSupply(currentSupply.toNumber());
         }
         fetchSupply();
-    }, [])
+    }, [mintContract])
 
     async function Mint() {
         try {
@@ -33,10 +35,6 @@ export default function Mint({ finalImage, firstYear }) {
             //get latest supply data
             const currentSupplyBN = await mintContract.totalSupply();
             const currentSupply = currentSupplyBN.toNumber();
-            //console.log(currentSupply);
-            //const mintCostBN = await mintContract.cost();
-            //setMintCostReadable(ethers.utils.formatEther(mintCostBN)); //in ether
-            //console.log(mintCostBN);
 
             //register transfer event from smart contract
             mintContract.on("Transfer", (from, to, tokenID) => {
@@ -62,10 +60,12 @@ export default function Mint({ finalImage, firstYear }) {
 
             //mint the NFT
             if (owner === account) {
-                await mintContract.mint(account, 1, url); //free mint for owner
+                const tx = await mintContract.mint(account, 1, url); //free mint for owner
+                setTxHash(tx.hash);
             }
             else { // have to pay the mint fee
-                await mintContract.mint(account, 1, url, { value: ethers.utils.parseEther("0.05") });
+                const tx = await mintContract.mint(account, 1, url, { value: ethers.utils.parseEther("0.05") });
+                setTxHash(tx.hash);
             }
 
         }
@@ -73,34 +73,16 @@ export default function Mint({ finalImage, firstYear }) {
             console.log(error);
         }
     }
-
-    async function Withdraw() {
-        try {
-            await mintContract.withdraw();
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }
-
 
     return (
         <div className="mint-section">
-            <button
-                onClick={Mint}
-            >
-                Mint
-            </button>
-
-            <button
-                onClick={Withdraw}
-            >
-                Withdraw
-            </button>
-
-            {active && <p>Total Minted: {currentSupply}</p>}
-            {isLoading && <p>Minting, hang tight...</p>}
-            {success && <p>Successfully minted! Wh()()t!</p>}
+            <button onClick={Mint}>Mint</button>
+            <div className="mint-section__content">
+                {active && <p>Total Minted: <span className="text-highlight"> {currentSupply}</span></p>}
+                {isLoading && <p>Minting, please hang tight...</p>}
+                {success && <p>Successfully minted!</p>}
+                {success && <a href={etherScanBase + txHash} target="_blank" rel="noreferrer">View on EtherScan</a>}
+            </div>
         </div>
     )
 }

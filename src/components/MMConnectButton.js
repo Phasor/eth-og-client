@@ -15,6 +15,10 @@ const MetamaskLogo = styled.img.attrs({
 const MMConnectButton = (props) => {
     const { activate, active, account, deactivate } = useWeb3React();
 
+    function hardRefresh() {
+        window.location.reload(false);
+    }
+
     if (active) {
         return (
             <div className='MM-button-container'>
@@ -26,7 +30,10 @@ const MMConnectButton = (props) => {
                         </div>
                         <button
                             className='MM-Button-container__button'
-                            onClick={deactivate}
+                            onClick={() => {
+                                deactivate()
+                                hardRefresh()
+                            }}
                         >
                             Log Out
                         </button>
@@ -42,7 +49,7 @@ const MMConnectButton = (props) => {
                 <div className="MM-button-items">
                     <div className="MM-button__logo-and-address">
                         <MetamaskLogo className="mm-button__logo" />
-                        <span className="mm-button__title">Metamask</span>
+                        <span className="mm-button__title">MetaMask</span>
                     </div>
                     <button
                         className='MM-Button-container__button'

@@ -8,9 +8,6 @@ export default function Canvas({ width, height, firstBlockDate, firstYear }) {
     const myCanvas = useRef();
     const { account } = useWeb3React();
     const [finalImage, setfinalImage] = useState(null);
-    //const rarity = "";
-    //console.log(typeof firstBlockDate);
-    //console.log(firstBlockDate - 1);
 
     useEffect(() => {
         const context = myCanvas.current.getContext('2d');
@@ -33,7 +30,7 @@ export default function Canvas({ width, height, firstBlockDate, firstYear }) {
                 setfinalImage(blob);
             })
         }
-    }, []);
+    }, [width, height, firstBlockDate, account]);
 
 
     return (
