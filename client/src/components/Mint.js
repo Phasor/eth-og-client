@@ -14,6 +14,8 @@ export default function Mint({ finalImage, firstYear }) {
     const [success, setSuccess] = useState(false);
     const [currentSupply, setCurrentSupply] = useState(0);
     const [txHash, setTxHash] = useState('');
+    const [errorStatus, setErrorStatus] = useState(false);
+    const [txError, setTxError] = useState('');
 
     const etherScanBase = 'https://rinkeby.etherscan.io/tx/'
 
@@ -71,6 +73,8 @@ export default function Mint({ finalImage, firstYear }) {
         }
         catch (error) {
             console.log(error);
+            setErrorStatus(true);
+            setTxError(error);
         }
     }
 
@@ -82,6 +86,7 @@ export default function Mint({ finalImage, firstYear }) {
                 {isLoading && <p>Minting, please hang tight...</p>}
                 {success && <p>Successfully minted!</p>}
                 {success && <a href={etherScanBase + txHash} target="_blank" rel="noreferrer">View on EtherScan</a>}
+                {errorStatus && <p>{txError}</p>}
             </div>
         </div>
     )
