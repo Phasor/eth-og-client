@@ -5,7 +5,9 @@
 @import 'Canvas.css';
 @import 'Mint.css';
 
-/* generic site styles */
+/* generic site styles 
+rgba(42, 181, 170);
+*/
 
 *,
 *::before,
@@ -14,20 +16,19 @@
 }
 
 #root{
-  background-color: rgba(42, 181, 170);
+  background-color: #f1faee;
 }
 
 html {
   box-sizing: border-box;
   font-size: 25px;
-  background-color: rgba(42, 181, 170);
+  background-color: #f1faee;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 0;
   margin: 0;
-  background-color: rgba(42, 181, 170);
 }
 
 .mr-1 {
