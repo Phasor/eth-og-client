@@ -4,11 +4,9 @@ This is an NFT project where users can mint an NFT that proves when they first i
 
 The project will mint an NFT with the date you first interacted with Ethereum Rinkeby test net with the connected wallet address via Metamask. Off-chain art and metadata are hosted on IPFS.
 
-A deployed version of the front end can be found [here](https://fervent-carson-b164f3.netlify.app)
-
-You will need some Rinkeby ETH to interact with this dapp. [Rinkeby Faucet](https://faucets.chain.link/rinkeby)
-
-A screencast of the dApp is available at: [URL]
+- [Deployed front end](https://fervent-carson-b164f3.netlify.app)
+- [Rinkeby Faucet]((https://faucets.chain.link/rinkeby))
+- [Screencast](https://www.loom.com/share/80afd3ba480c4ad48dbd9f5a3bdacff2)
 
 
 ## Directory Structure
