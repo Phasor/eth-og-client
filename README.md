@@ -49,6 +49,8 @@ NB: only the NFT Storage and Etherscan api keys are needed if you wish to use th
 
 Truffle has been used to test and deploy the smart contracts. 
 
+### Testing
+
 To test the current version of the smart contract NFT.sol:
 
 1. In the project root folder (not in /client):
@@ -66,6 +68,8 @@ To test the current version of the smart contract NFT.sol:
 4. Run the smart contract tests locally (port 8545):
 
 `truffle test `
+
+### Update Smart Contract
 
 If you wish to alter and/or redeploy the smart contract to local/public network:
 
