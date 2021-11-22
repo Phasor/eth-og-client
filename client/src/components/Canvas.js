@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useRef, useState } from 'react';
 import { useWeb3React } from '@web3-react/core';
-import baseImage from '../static/preview.jpg';
+import baseImage from '../static/base.jpg';
 import Mint from './Mint';
 
 export default function Canvas({ width, height, firstBlockDate, firstYear }) {
@@ -18,12 +18,12 @@ export default function Canvas({ width, height, firstBlockDate, firstYear }) {
         //draw date && address over the top of base image
         image.onload = () => {
             context.drawImage(image, 0, 0, width, height);
-            context.fillStyle = 'white';
-            context.font = '50px serif';
+            context.fillStyle = '#b0b0b0';
+            context.font = '50px Arial';
             context.textAlign = 'center';
-            context.fillText(firstBlockDate, width / 2, height / 1.2);
-            context.font = '16px serif';
-            context.fillText(account, width / 2, height / 1.1);
+            context.fillText(firstBlockDate, width / 2, height / 1.15);
+            context.font = '16px Arial';
+            context.fillText(account, width / 2, height / 1.05);
 
             //save image by converting to blob
             myCanvas.current.toBlob(function (blob) {
