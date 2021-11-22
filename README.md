@@ -2,7 +2,7 @@
 
 This is an NFT project where users can mint an NFT that proves when they first interacted with the Ethereum blockchain.
 
-The project will mint an NFT with the date you first interacted with Ethereum Rinkeby test net with the connected wallet address via Metamask.
+The project will mint an NFT with the date you first interacted with Ethereum Rinkeby test net with the connected wallet address via Metamask. Off-chain art and metadata are hosted on IPFS.
 
 A screencast of the dApp is available at: [URL]
 
@@ -28,7 +28,13 @@ This repo contains all the code to re-deploy the smart contract (NFT.sol) as the
 
 `npm install`
 
-4. Populate the values in `client/.env.sample` and rename the file `.env`. NB: only the NFT Storage and etherscan api keys are needed if you wish to use the existing deployed version of NFT.sol. If you wish to update the smart contract and interact with that, please update the truffle orientated .env at the project root level too.
+4. Populate the values in `client/.env.sample` and rename the file `.env`. 
+
+You will need an API key from [NFT.storage](https://nft.storage/) to upload to IPFS.
+
+You will need an API key from [Etherscan](https://etherscan.io/apis) to get details about the connected Ethereum address.
+
+NB: only the NFT Storage and Etherscan api keys are needed if you wish to use the existing deployed version of NFT.sol. If you wish to update the smart contract and interact with that, please update the truffle orientated .env at the project root level too.
 
 5. Make sure you are in the `client` folder, then run the app locally:
 
