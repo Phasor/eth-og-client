@@ -1,12 +1,21 @@
 # Getting Started with ETH OG
 
-This is an NFT project where users can mint an NFT that proves when they first interacted with Ethereum.
+This is an NFT project where users can mint an NFT that proves when they first interacted with the Ethereum blockchain.
 
 The project will mint an NFT with the date you first interacted with Ethereum Rinkeby test net with the connected wallet address via Metamask.
 
-This repo contains all the code to re-deploy the smart contract (NFT.sol) as the owner and to create your own version of the front end dapp.
+
 
 A screencast of the dApp is available at: [URL]
+
+## Directory Structure
+
+This app uses [React](https://reactjs.org/) and [Truffle Suite](https://trufflesuite.com/).
+
+The truffle smart contract side of the project is located at the project root directoty. The React app is located in the Client folder. Two package.json files and two .env files exist, one for the truffle back end, and one for the front end React app.
+
+This repo contains all the code to re-deploy the smart contract (NFT.sol) as the owner and to create your own version of the front end dapp.
+
 
 ## React App Instructions
 
@@ -16,7 +25,9 @@ A screencast of the dApp is available at: [URL]
 
 2. Ensure you have node.js installed
 
-3. Install dependencies locally with:
+3. Change into the app `client` directory and install React app dependencies locally with:
+
+`cd client`
 
 `npm install`
 
@@ -35,12 +46,6 @@ Truffle has been used to test and deploy the smart contracts. If you wish to dep
 4. Test the contract with `truffle test`. Testing on the development network is set to run on port 8545
 5. Deploy the contract with `truffle migrate`
 6. Update references to the ABI in `SRC/abi.js` and the smart contract address in `SRC/Components/Mint.js`
-
-## Directory Structure
-
-This app uses [React](https://reactjs.org/) and [Truffle Suite](https://trufflesuite.com/).
-
-As such, the main files for the React front end app are located in `/SRC`. The main directories/files for the Ethereum/truffle interaction are Contracts, Migrations and truffle-config.js.
 
 ## Front End Dapp
 
