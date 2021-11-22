@@ -17,11 +17,13 @@ export default function Main(props) {
                     {isLoading && <div>Loading..</div>}
                     {isDataLoaded && (
                         <>
-                            <p className="main-card__first-date">Block Number:
+                            <p className="main-card__first-date">First Block Number:
                                 <span className="text-highlight">{firstBlockNumber}</span></p>
 
-                            <p className="main-card__first-date">Transaction Date:
+                            <p className="main-card__first-date">First Transaction Date:
                                 <span className="text-highlight"> {firstBlockDate}</span></p>
+
+                            <p>NFT Preview:</p>
 
                             <figure className="main-card__pic-preview">
                                 <Canvas height={400} width={400} firstBlockDate={firstBlockDate} firstYear={firstYear} />
