@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @title An ERC 721 NFT minting contract
-/// @author Ben Murison
+/// @author Phas0r
 /// @notice You can use this contract to mint an NFT that shows when you first interacted with Eth mainnet using a metamask wallet
 /// @custom:experimental This is an experimental contract.
 contract NFT is ERC721Enumerable, Ownable {
@@ -22,7 +22,7 @@ contract NFT is ERC721Enumerable, Ownable {
     string memory _name,
     string memory _symbol
   ) ERC721(_name, _symbol) {
-    //mint(msg.sender, 1); //mint 1 nft to owner
+    //mint(msg.sender, 1); 
   }
 
   /// @notice main function that mints the NFT

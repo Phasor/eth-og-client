@@ -1,7 +1,8 @@
-The front end UI can be found at:
+1.The front end UI can be found at:
 
 https://fervent-carson-b164f3.netlify.app/
 
-The smart contract can be found on Rinkeby at:
+
+2. The smart contract can be found on Etherrum Rinkeby Network at address:
 
 0x5560ECeDd9F72f5b74BaAE7A4edE487579f216cA

@@ -1,13 +1,11 @@
 const NFT = artifacts.require("NFT");
-const { Web3ReactProvider } = require('@web3-react/core');
-const { catchRevert } = require('../src/utils/catcher');
+const { catchRevert } = require('./catcher');
 
-
-/*
- * uncomment accounts to access the test accounts made available by the
- * Ethereum client
+/* 
  * See docs: https://www.trufflesuite.com/docs/truffle/testing/writing-tests-in-javascript
- */
+These are some basic unit tests on NFT.sol. 
+*/
+
 contract("NFT", function (accounts) {
   it("should assert true", async function () {
     await NFT.deployed();
@@ -67,30 +65,6 @@ contract("NFT", function (accounts) {
     const _newURI = "newURI";
     await catchRevert(nftInstance.changeTokenURI(tokenSupply, _newURI, { from: accounts[1] }));
   });
-
-  // //5. owner can withdraw funds
-  // it("owner can withdraw funds from contract", async () => {
-  //   const nftInstance = await NFT.deployed();
-
-  //   //get initial balance of owner
-  //   const intialOwnerBalance = await nftInstance.getBalance.call(accounts[0]);
-
-  //   //get balance of contract
-  //   const initialContractBalance = await nftInstance.getContractEthBalance.call();
-
-  //   //withdraw all contract funds to owner
-  //   await nftInstance.withdraw({ from: accounts[0] });
-
-  //   //get updated balance of owner
-  //   const updatedOwnerBalance = await nftInstance.getBalance.call(accounts[0]);
-
-  //   const ownerBalanceDelta = (updatedOwnerBalance - intialOwnerBalance);
-  //   const newContractBalance = await nftInstance.balance;
-
-  //   assert.equal(newContractBalance, 0, "contract still holds funds");
-  //   assert.equal(ownerBalanceDelta, initialContractBalance, "change in owner funds not right");
-
-  // });
 
   //4.owner can change the cost
   it("should let the owner change the cost", async () => {

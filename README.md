@@ -4,8 +4,6 @@ This is an NFT project where users can mint an NFT that proves when they first i
 
 The project will mint an NFT with the date you first interacted with Ethereum Rinkeby test net with the connected wallet address via Metamask.
 
-
-
 A screencast of the dApp is available at: [URL]
 
 ## Directory Structure
@@ -15,7 +13,6 @@ This app uses [React](https://reactjs.org/) and [Truffle Suite](https://truffles
 The truffle smart contract side of the project is located at the project root directoty. The React app is located in the Client folder. Two package.json files and two .env files exist, one for the truffle back end, and one for the front end React app.
 
 This repo contains all the code to re-deploy the smart contract (NFT.sol) as the owner and to create your own version of the front end dapp.
-
 
 ## React App Instructions
 
@@ -31,25 +28,53 @@ This repo contains all the code to re-deploy the smart contract (NFT.sol) as the
 
 `npm install`
 
-4. Populate the values in `.env.sample` and rename the file `.env`. NB: only the NFT Storage and etherscan api keys are needed if you wish to use the existing deployed version of NFT.sol. If you wish to update that, the infura key and mnemonic will need to be populated too.
+4. Populate the values in `client/.env.sample` and rename the file `.env`. NB: only the NFT Storage and etherscan api keys are needed if you wish to use the existing deployed version of NFT.sol. If you wish to update the smart contract and interact with that, please update the truffle orientated .env at the project root level too.
 
-5. To start the front end React App in development mode, use:
+5. Make sure you are in the `client` folder, then run the app locally:
 
 `npm run start`
 
 ## Smart Contract
 
-Truffle has been used to test and deploy the smart contracts. If you wish to deploy updated versions:
-1. Update the contract, NFT.sol and any migrations required
-2. Populate the `.env` file with all values to ensure you can connect to your ethereum node and sign the contract creation transaction
-3. Ensure the network section of `truffle-config.js` is populated
-4. Test the contract with `truffle test`. Testing on the development network is set to run on port 8545
-5. Deploy the contract with `truffle migrate`
-6. Update references to the ABI in `SRC/abi.js` and the smart contract address in `SRC/Components/Mint.js`
+Truffle has been used to test and deploy the smart contracts. 
 
-## Front End Dapp
+If you wish to deploy updated versions of the smart contract, you will need to install truffle and other dependencies, seperate to those above installed as part of the React app. Truffle dependencies are located in the root project directory `/package.json`.
 
-The website to mint your NFT using the currently deployed version of the app's NFT.sol contract can be located at https://www.[TEST].com.
+1. In the project root folder (not in /client):
+
+`npm install`
+
+2. Update the contract, NFT.sol and any migrations required
+
+3. Populate the values in `.env.sample` file at the project root level and rename the file `.env`. 
+
+4. Ensure the network section of `truffle-config.js` is populated with the relevalnt network you wish to deploy to. By default the project uses Rinkeby test net.
+
+5. Test the contract with truffle.
+
+Install a local test chain like Ganache:
+
+`npm install ganache-cli`
+
+Run the local development blockchain:
+
+`ganache-cli`
+
+Run the tests:
+
+ `truffle test`. 
+
+Testing on the development network is set to run on port 8545.
+
+6. Deploy the new contract (change the network as desired):
+
+ `truffle migrate --network rinkeby`
+
+7. Update references to the ABI in `client/SRC/abi.js` and the smart contract address in `client/SRC/Components/Mint.js`.
+
+## Deployed Front End
+
+The React front end app located in `/client` has already been deployed publically and can be located at https://www.[TEST].com.
 
 ## Create React App
 

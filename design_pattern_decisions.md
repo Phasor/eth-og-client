@@ -2,9 +2,10 @@
 
 I have used, amongst others, the following patterns to improve the contract's security:
 
-## Pragma Solidity Number
+## Inheritance
 
-I am using a specific solidity to reduce security vulnerabilities.
+I am using the OpenZeppelin library contracts ERC 721 Enumerable and Ownable.
+
 
 ## Access Control
 
