@@ -45,12 +45,16 @@ NB: only the NFT Storage and Etherscan api keys are needed if you wish to use th
 `npm run start`
 
 
-## Smart Contract
+## Smart Contract Management
 
 Truffle has been used to test and deploy the smart contracts. 
 
+If you do not have truffle installed:
 
-### Testing
+`npm install -g truffle`
+
+
+### Smart Contract Testing
 
 To test the current version of the smart contract NFT.sol:
 
