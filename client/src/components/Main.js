@@ -12,7 +12,7 @@ export default function Main(props) {
         <div className="main">
             <div className="main-container">
                 <Card>
-                    {!active && <p>Please connect your MetaMask wallet.</p>}
+                    {!active && <p>Please Connect MetaMask to Rinkeby.</p>}
                     {isError && <p>Something went wrong.</p>}
                     {isLoading && <div>Loading..</div>}
                     {isDataLoaded && (
