@@ -65,7 +65,7 @@ To test the current version of the smart contract NFT.sol:
 
 2. Install a local test chain like Ganache:
 
-`npm install ganache-cli`
+`npm install -g ganache-cli`
 
 3. Run Ganache:
 
