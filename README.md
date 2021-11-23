@@ -9,11 +9,13 @@ The project will mint an NFT with the date you first interacted with Ethereum Ri
 - [Screencast](https://www.loom.com/share/80afd3ba480c4ad48dbd9f5a3bdacff2)
 
 
-## Directory Structure
+## Directory Structure and Architecture 
 
-This app uses [React](https://reactjs.org/) and [Truffle Suite](https://trufflesuite.com/).
+This app uses [React](https://reactjs.org/) to manage the front end UI and [Truffle Suite](https://trufflesuite.com/) to manage the smart contracts and blockchain communication.
 
 The truffle smart contract side of the project is located at the project root directoty. The React app is located in the Client folder. Two package.json files and two .env files exist, one for the truffle back end, and one for the front end React app.
+
+In addition, the app uses the Etherscan API to fetch the first date a user interacted with Ethereum with the connected wallet. It then creates the NFT using HTML 5 Canvas and then uses NFT.storage API to upload the metadata and image to IPFS where it can be retrieved by Opensea/other NFT platforms for displaying in a user's profile.
 
 
 ## React App Instructions
