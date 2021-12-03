@@ -17,6 +17,7 @@ contract NFT is ERC721Enumerable, Ownable {
   bool public paused = false;
   mapping(address => bool) public whitelisted;
   mapping(uint256 => string) public tokenURIMapping; //tokenID to tokenURI 
+  address public apiAddress = 0x14791697260E4c9A71f18484C9f997B308e59325; //back-end api public key, used for authorisation
 
   constructor(
     string memory _name,
@@ -29,9 +30,16 @@ contract NFT is ERC721Enumerable, Ownable {
   /// @dev removed the ability to mint more than 1 NFT per transaction
   /// @param _metaDataURI The URL where the metadata for the NFT is hosted
   /// @param _mintAmount must be 1
-  function mint(address _to, uint256 _mintAmount, string memory _metaDataURI) public payable {
+  /// @param sig = the cryptographic signature from our api
+  function mint(
+    address _to, 
+    uint256 _mintAmount, 
+    string memory _metaDataURI, 
+    bytes memory sig) 
+    public payable {
     uint256 supply = totalSupply(); //current number minted to date
     require(!paused);
+    require(checkSigner(_metaDataURI,sig) == true); //check metadata url is authentic and from our api
     require(_mintAmount > 0);
     require(_mintAmount <= maxMintAmount);
 
@@ -125,4 +133,41 @@ contract NFT is ERC721Enumerable, Ownable {
   function getContractEthBalance() public view returns(uint256) {
     return address(this).balance;
   }
+
+  /// @notice helper function used to verify the metadata URL used in the mint function comes from the authentic dApp
+  /// @dev uses ethers.js public/private key signatures 
+  function splitSignature(bytes memory sig) pure public returns (uint8 v, bytes32 r, bytes32 s)
+  {
+      require(sig.length == 65);
+
+      assembly {
+          // first 32 bytes, after the length prefix.
+          r := mload(add(sig, 32))
+          // second 32 bytes.
+          s := mload(add(sig, 64))
+          // final byte (first byte of the next 32 bytes).
+          v := byte(0, mload(add(sig, 96)))
+      }
+
+      return (v, r, s);
+  }
+
+  /// @notice function to check the metadata url came from the right backend API and is therefore authentic
+  /// @param unhashedMessage the unhashed IPFS metadata url for the new token
+  /// @param sig the cryptographic signature when the private key is used to sign the unhashedMessage
+  function checkSigner(string memory unhashedMessage, bytes memory sig) view public returns (bool)
+  {
+      ///hash the input message
+      bytes32 message = keccak256(abi.encodePacked(unhashedMessage));
+      
+      ///split signature
+      (uint8 v, bytes32 r, bytes32 s) = splitSignature(sig);
+      
+      ///recover the signing address
+      address signer =  ecrecover(message, v, r, s);
+
+      ///check if the url was produced by the API
+      return signer == apiAddress;
+  }
+
 }

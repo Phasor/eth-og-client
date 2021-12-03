@@ -89,10 +89,5 @@ If you wish to alter and/or redeploy the smart contract to local/public network:
 3. Update references to the smart contract in the front end React app. Update the ABI in `client/SRC/abi.js` and the smart contract address in `client/SRC/Components/Mint.js`.
 
 
-## Deployed Front End and Contract
-
-The React front end app located in `/client` has already been deployed publically and can be located [here](https://fervent-carson-b164f3.netlify.app/)
-
-Link to deployed [Rinkeby Smart Contract](https://rinkeby.etherscan.io/address/0x5560ecedd9f72f5b74baae7a4ede487579f216ca)
 
 
