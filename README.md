@@ -96,8 +96,3 @@ The React front end app located in `/client` has already been deployed publicall
 Link to deployed [Rinkeby Smart Contract](https://rinkeby.etherscan.io/address/0x5560ecedd9f72f5b74baae7a4ede487579f216ca)
 
 
-## Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-Test.
