@@ -4,6 +4,7 @@
 @import 'Footer.css';
 @import 'Canvas.css';
 @import 'Mint.css';
+@import 'Intro.css';
 
 /* generic site styles 
 rgba(42, 181, 170);
@@ -17,6 +18,8 @@ rgba(42, 181, 170);
 
 #root{
   background-color: #b8b8b8;
+  font-family: 'Press Start 2P', cursive;
+  font-size: medium;
 }
 
 html {

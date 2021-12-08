@@ -12,7 +12,8 @@ export default function Footer() {
     return (
         <div className="footer">
             <div className="footer-container">
-                <p>Copyright 2021  <span className="twitter-logo"><TwitterLogo /></span>@investingtribe</p>
+                <p>&copy; 2021  <span className="twitter-logo"><TwitterLogo /></span>
+                    <a href="https://twitter.com/investingtribe" target="_blank" rel="noreferrer noopener">@investingtribe</a></p>
             </div>
         </div >
     )

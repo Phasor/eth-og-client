@@ -5,11 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from './Nav';
 import Main from './Main';
 import Footer from './Footer';
+import Intro from './Intro';
 
 //pull in .env variables
 require('dotenv').config();
-//console.log(process.env.REACT_APP_INFURA_API_KEY);
-//console.log(process.env.REACT_APP_MNEMONIC);
 
 function getLibrary(provider) {
   return new ethers.providers.Web3Provider(provider);
@@ -21,6 +20,7 @@ function App() {
     <Web3ReactProvider getLibrary={getLibrary}>
       <div className="App">
         <Nav />
+        <Intro />
         <Main />
         <Footer />
       </div>

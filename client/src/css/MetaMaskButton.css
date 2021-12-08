@@ -1,9 +1,8 @@
-
 .MM-button-container{
-    width: 390px;
-    margin-right: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: 420px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .MM-button-items{
@@ -14,18 +13,18 @@
 }
 
 .MM-button__logo-and-address,MM-Button-container__button{
-    flex-basis: 49%;
+   flex-basis: auto;
 }
 
 .MM-Button-container__button{
-    font-size: 18px;
+    font-size: 12px;
     font-family: inherit;
-    padding: 7px 20px;
+    padding: 5px;
     cursor: pointer;
     border-radius: 5px;
     background: none;
-    border: 1px solid black;
-    width: 110px;
+    border: 2px solid black;
+    width: 120px;
 }
 
 .MM-Button-container__button:hover{
@@ -34,7 +33,7 @@
 }
 
 .address-text{
-    font-size: 20px;
+    font-size: 12px;
 }
 
 .mm-button__logo{

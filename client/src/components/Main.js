@@ -66,7 +66,7 @@ export default function Main() {
                                 <span className="text-highlight">{firstBlockNumber}</span></p>
 
                             <p className="main-card__first-date">First Transaction Date:
-                                <span className="text-highlight"> {firstBlockDate}</span></p>
+                                <span className="text-highlight"><br />{firstBlockDate}</span></p>
 
                             <span className="nft-preview"><p>NFT Preview</p></span>
 
@@ -85,6 +85,6 @@ export default function Main() {
 
                 </Card>
             </div>
-        </div>
+        </div >
     )
 }
