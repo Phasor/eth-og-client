@@ -1,6 +1,6 @@
 
 .main{
-    background-color:#f1faee;
+    background-color: #b8b8b8;
     width:100%
 }
 .main-container{
@@ -17,7 +17,13 @@
 }
 
 .text-highlight{
-    color: white;
+    color:#696969;
     font-size: 23px;
     margin-left: 10px;
+}
+
+.nft-preview{
+    margin: 0px auto;
+    margin-bottom: -20px;
+    font-weight: bold;
 }

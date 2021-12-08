@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import useUploader from '../hooks/useUploader';
 import useContract from '../hooks/useContract';
 import { useWeb3React } from '@web3-react/core';
 import { ethers } from 'ethers';
 import ABI from '../abi';
 
-export default function Mint({ finalImage, firstYear }) {
+export default function Mint({ metaDataUrl, signature }) {
     const { account, active } = useWeb3React();
-    const { uploadMetaData } = useUploader();
-    const ContractAddress = '0x5560ECeDd9F72f5b74BaAE7A4edE487579f216cA'; // Rinkeby
+    const ContractAddress = '0xCBFbbcfDBaF4E8944fbdC791493a149B45129F8A'; // Rinkeby
     const mintContract = useContract(ContractAddress, ABI);
     const [isLoading, setIsLoading] = useState(false);
     const [success, setSuccess] = useState(false);
@@ -16,6 +14,7 @@ export default function Mint({ finalImage, firstYear }) {
     const [txHash, setTxHash] = useState('');
     const [errorStatus, setErrorStatus] = useState(false);
     const [txError, setTxError] = useState('');
+
 
     const etherScanBase = 'https://rinkeby.etherscan.io/tx/'
 
@@ -28,45 +27,25 @@ export default function Mint({ finalImage, firstYear }) {
         fetchSupply();
     }, [mintContract])
 
-    async function Mint() {
+    async function MintNFT() {
         try {
-            //set loading
             setIsLoading(true);
-            setSuccess(false);
-
-            //get latest supply data
-            const currentSupplyBN = await mintContract.totalSupply();
-            const currentSupply = currentSupplyBN.toNumber();
-
             //register transfer event from smart contract
             mintContract.on("Transfer", (from, to, tokenID) => {
-                setIsLoading(false);
                 setSuccess(true);
+                setIsLoading(false);
             })
-
-            //upload the metadata to IPFS
-            const url = await uploadMetaData(
-                `#${currentSupply + 1}`,
-                'A cool description of this item',
-                finalImage,
-                [
-                    {
-                        "trait_type": "Year",
-                        "value": firstYear
-                    }
-                ],
-            );
 
             //get the contract owner address
             const owner = await mintContract.owner();
 
             //mint the NFT
             if (owner === account) {
-                const tx = await mintContract.mint(account, 1, url); //free mint for owner
+                const tx = await mintContract.mint(account, 1, metaDataUrl, signature); //free mint for owner
                 setTxHash(tx.hash);
             }
             else { // have to pay the mint fee
-                const tx = await mintContract.mint(account, 1, url, { value: ethers.utils.parseEther("0.05") });
+                const tx = await mintContract.mint(account, 1, metaDataUrl, signature, { value: ethers.utils.parseEther("0.05") });
                 setTxHash(tx.hash);
             }
 
@@ -80,10 +59,10 @@ export default function Mint({ finalImage, firstYear }) {
 
     return (
         <div className="mint-section">
-            <button onClick={Mint}>Mint</button>
+            <button onClick={MintNFT}>Mint Now!</button>
             <div className="mint-section__content">
                 {active && <p>Total Minted: <span className="text-highlight"> {currentSupply}</span></p>}
-                {isLoading && <p>Minting, please hang tight...</p>}
+                {isLoading && <p>Please confirm and hang tight...</p>}
                 {success && <p>Successfully minted!</p>}
                 {success && <a href={etherScanBase + txHash} target="_blank" rel="noreferrer">View on EtherScan</a>}
                 {errorStatus && <p>{txError}</p>}

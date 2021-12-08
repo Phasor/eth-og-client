@@ -110,6 +110,20 @@ const ABI = [
         "type": "event"
     },
     {
+        "inputs": [],
+        "name": "apiAddress",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
         "inputs": [
             {
                 "internalType": "address",
@@ -543,6 +557,11 @@ const ABI = [
                 "internalType": "string",
                 "name": "_metaDataURI",
                 "type": "string"
+            },
+            {
+                "internalType": "bytes",
+                "name": "sig",
+                "type": "bytes"
             }
         ],
         "name": "mint",
@@ -692,6 +711,36 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes",
+                "name": "sig",
+                "type": "bytes"
+            }
+        ],
+        "name": "splitSignature",
+        "outputs": [
+            {
+                "internalType": "uint8",
+                "name": "v",
+                "type": "uint8"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "r",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "s",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "pure",
         "type": "function",
         "constant": true
     }

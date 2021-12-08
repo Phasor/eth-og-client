@@ -16,13 +16,13 @@ rgba(42, 181, 170);
 }
 
 #root{
-  background-color: #f1faee;
+  background-color: #b8b8b8;
 }
 
 html {
   box-sizing: border-box;
   font-size: 25px;
-  background-color: #f1faee;
+  background-color: #b8b8b8;
 }
 
 body {

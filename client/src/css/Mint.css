@@ -11,19 +11,17 @@
     width: 200px;
     margin: 20px auto;
     border-radius: 5px;
-    background-color: #0275d8;
+    background-color:#ba3a39;
     border: none;
     color: white;
 }
 
-.mint-section button:hover{
-    background-color: darkslategrey;
-    color:white;
-}
 
 .mint-section button:active{
-    background-color: black;
-    color:white;
+    -webkit-box-shadow: inset 0px 0px 8px #949494;
+    -moz-box-shadow: inset 0px 0px 8px #949494;
+    box-shadow: inset 0px 0px 8px #949494;
+    outline: none;
 }
 
 .mint-section a{

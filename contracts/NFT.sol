@@ -55,7 +55,7 @@ contract NFT is ERC721Enumerable, Ownable {
     }
   }
 
-  /// @notice returns the tokens owned by an address
+  /// @notice returns the tokens owned by any supplied address, not just owner of contract
   /// @return tokenIds owned by _owner from this contract
   function walletOfOwner(address _owner)
     public
@@ -155,18 +155,18 @@ contract NFT is ERC721Enumerable, Ownable {
   /// @notice function to check the metadata url came from the right backend API and is therefore authentic
   /// @param unhashedMessage the unhashed IPFS metadata url for the new token
   /// @param sig the cryptographic signature when the private key is used to sign the unhashedMessage
-  function checkSigner(string memory unhashedMessage, bytes memory sig) view public returns (bool)
+  function checkSigner(string memory unhashedMessage, bytes memory sig) view private returns (bool)
   {
-      ///hash the input message
+      //hash the input message
       bytes32 message = keccak256(abi.encodePacked(unhashedMessage));
       
-      ///split signature
+      //split signature
       (uint8 v, bytes32 r, bytes32 s) = splitSignature(sig);
       
-      ///recover the signing address
+      //recover the signing address
       address signer =  ecrecover(message, v, r, s);
 
-      ///check if the url was produced by the API
+      //check if the url was produced by the API
       return signer == apiAddress;
   }
 

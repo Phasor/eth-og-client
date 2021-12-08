@@ -4,5 +4,8 @@
         "@testing-library/user-event": "^12.1.10",
         "@truffle/hdwallet-provider": "^1.6.0",
         "dotenv": "^10.0.0"
+    },
+    "devDependencies": {
+        "truffle-plugin-verify": "^0.5.19"
     }
 }
