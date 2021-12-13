@@ -1,0 +1,17 @@
+.FAQ-container{
+    width: 75%;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+   background-color: white;
+}
+
+.FAQ-container__text{
+    padding: 20px;
+    margin: auto;
+    font-size: medium;
+    color: black;
+    border: 15px black;
+    border-style: double;
+}
+

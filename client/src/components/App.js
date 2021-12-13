@@ -6,6 +6,7 @@ import Nav from './Nav';
 import Main from './Main';
 import Footer from './Footer';
 import Intro from './Intro';
+import FAQ from './FAQ';
 
 //pull in .env variables
 require('dotenv').config();
@@ -22,6 +23,7 @@ function App() {
         <Nav />
         <Intro />
         <Main />
+        <FAQ />
         <Footer />
       </div>
     </Web3ReactProvider >
