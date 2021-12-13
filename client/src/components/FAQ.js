@@ -16,9 +16,11 @@ export default function FAQ() {
                     <li>Is there any utility?</li>
                     <br />
                     <p>After 1,000 mints have been sold, we will commit to providing 3d metaverse-ready models of each item so that your avatar can flex your Eth OG status in the metaverse (Sandbox, Cryptovoxels)! </p>
+
                     <li>How can I contact you?</li>
                     <br />
-                    <p>Discord, Twitter</p>
+                    <p><a href="https://twitter.com/onchainOG" target="_blank" rel="noreferrer noopener">Twitter</a></p>
+                    <p><a href="https://discord.gg/3ZBawXUUsu" target="_blank" rel="noreferrer noopener">Discord</a></p>
                     <li>Is there a members discord channel?</li>
                     <br />
                     <p>Members will be able to verify that they hold an Eth OG NFT on discord and get exclusive access to the OG lounge. </p>
@@ -27,6 +29,6 @@ export default function FAQ() {
                     <p>There is an initial introductory price of ETH 0.05 per NFT. The price will increase to 0.1 Eth after an undisclosed time. </p>
                 </ol>
             </div>
-        </div>
+        </div >
     )
 }
