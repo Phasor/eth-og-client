@@ -120,7 +120,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [
@@ -157,7 +158,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [],
@@ -170,7 +172,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [
@@ -189,7 +192,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [],
@@ -202,7 +206,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [
@@ -226,7 +231,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [],
@@ -239,14 +245,15 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [
             {
-                "internalType": "uint256",
+                "internalType": "string",
                 "name": "",
-                "type": "uint256"
+                "type": "string"
             }
         ],
         "name": "mintedByVintage",
@@ -258,7 +265,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [],
@@ -271,7 +279,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [],
@@ -284,7 +293,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [
@@ -303,7 +313,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [],
@@ -316,7 +327,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [],
@@ -411,7 +423,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [],
@@ -424,7 +437,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [
@@ -443,7 +457,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [
@@ -467,7 +482,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [
@@ -486,7 +502,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [],
@@ -499,7 +516,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [
@@ -554,7 +572,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [
@@ -570,24 +589,20 @@ const ABI = [
             },
             {
                 "internalType": "string",
-                "name": "_metaDataURI",
+                "name": "message",
                 "type": "string"
             },
             {
                 "internalType": "bytes",
                 "name": "sig",
                 "type": "bytes"
-            },
-            {
-                "internalType": "uint256",
-                "name": "year",
-                "type": "uint256"
             }
         ],
         "name": "mint",
         "outputs": [],
         "stateMutability": "payable",
-        "type": "function"
+        "type": "function",
+        "payable": true
     },
     {
         "inputs": [
@@ -606,7 +621,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [
@@ -625,7 +641,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [
@@ -741,7 +758,8 @@ const ABI = [
             }
         ],
         "stateMutability": "view",
-        "type": "function"
+        "type": "function",
+        "constant": true
     },
     {
         "inputs": [
@@ -770,7 +788,8 @@ const ABI = [
             }
         ],
         "stateMutability": "pure",
-        "type": "function"
+        "type": "function",
+        "constant": true
     }
 ]
 

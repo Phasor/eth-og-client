@@ -17,7 +17,7 @@ contract EthOG is ERC721Enumerable, Ownable {
   bool public paused = false;
   mapping(address => bool) public whitelisted;
   mapping(uint256 => string) public tokenURIMapping; //tokenID to tokenURI 
-  mapping(uint256 => uint256 ) public mintedByVintage; // number of mints per vintage so far
+  mapping(string => uint256 ) public mintedByVintage; // number of mints per vintage so far
   address public apiAddress = 0x14791697260E4c9A71f18484C9f997B308e59325; //back-end api public key, used for authorisation
   uint256 public hardCapByVintage = 2000;
 
@@ -26,35 +26,36 @@ contract EthOG is ERC721Enumerable, Ownable {
     string memory _symbol
   ) ERC721(_name, _symbol) {
     //initialise supply
-    mintedByVintage[2015] = 0;
-    mintedByVintage[2016] = 0;
-    mintedByVintage[2017] = 0;
-    mintedByVintage[2018] = 0;
-    mintedByVintage[2019] = 0;
-    mintedByVintage[2020] = 0;
-    mintedByVintage[2021] = 0;
-    mintedByVintage[2022] = 0;
-    mintedByVintage[2023] = 0;
+    mintedByVintage["2015"] = 0;
+    mintedByVintage["2016"] = 0;
+    mintedByVintage["2017"] = 0;
+    mintedByVintage["2018"] = 0;
+    mintedByVintage["2019"] = 0;
+    mintedByVintage["2020"] = 0;
+    mintedByVintage["2021"] = 0;
+    mintedByVintage["2022"] = 0;
+    mintedByVintage["2023"] = 0;
   }
 
   /// @notice main function that mints the NFT
   /// @dev removed the ability to mint more than 1 NFT per transaction
-  /// @param _metaDataURI The URL where the metadata for the NFT is hosted
+  /// @param message The concatenation of first year transacted + meta data URI
   /// @param _mintAmount must be 1
-  /// @param sig = the cryptographic signature from our api
-  /// @param year = the year the address first did a transaction
+  /// @param sig = the cryptographic signature of message from our api signed with its private key
   function mint(
     address _to, 
-    uint256 _mintAmount, 
-    string memory _metaDataURI, 
-    bytes memory sig,
-    uint256 year) 
+    uint256 _mintAmount,  
+    string calldata message, 
+    bytes memory sig
+    ) 
     public payable {
     uint256 supply = totalSupply(); //current number minted to date
-    require(!paused);
-    require(checkSigner(_metaDataURI,sig) == true); //check metadata url is authentic and from our api
-    require(mintedByVintage[year] <= hardCapByVintage);
-    require(_mintAmount > 0);
+    string memory year = string(message[:4]); //first 4 characters
+    string memory metaDataURI = string(message[4:]); //all characters after first 4
+    require(!paused,"contract paused");
+    require(checkSigner(message,sig) == true, "incorrect signature"); //check metadata url is authentic and from our api
+    require(mintedByVintage[year] <= hardCapByVintage,"mint limit exceeded");
+    require(_mintAmount > 0,"must mint more than 0");
     require(_mintAmount <= maxMintAmount);
 
     if (msg.sender != owner()) {
@@ -64,7 +65,7 @@ contract EthOG is ERC721Enumerable, Ownable {
     }
 
     for (uint256 i = 1; i <= _mintAmount; i++) {
-      tokenURIMapping[supply + i] = _metaDataURI; 
+      tokenURIMapping[supply + i] = metaDataURI; 
       mintedByVintage[year] += 1; 
       _safeMint(_to, supply + i); 
     }

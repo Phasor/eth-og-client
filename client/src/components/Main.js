@@ -7,7 +7,7 @@ export default function Main() {
     const [firstBlockNumber, setFirstBlockNumber] = useState(0);
     //const [firstBlockDate, setFirstBlockDate] = useState(null);
     const [firstYear, setFirstYear] = useState(null);
-    const [metaDataUrl, setMetaDataUrl] = useState("");
+    const [apiMessage, setApiMessage] = useState(null);
     const [imageBuffer, setImageBuffer] = useState(null);
     const [signature, setSignature] = useState(null);
     const [isError, setIsError] = useState(false);
@@ -25,15 +25,15 @@ export default function Main() {
                     const API_URL = `http://localhost:4000/api/url/?add=${account}&key=${process.env.REACT_APP_API_KEY}`;
                     const apiResponse = await fetch(API_URL);
                     const apiData = await apiResponse.json();
-                    //console.log(apiData);
+                    console.log(apiData);
 
                     //set state from api call
                     setFirstBlockNumber(apiData.firstBlock);
                     //setFirstBlockDate(apiData.date);
                     setFirstYear(apiData.firstYear);
                     setImageBuffer(apiData.image.data)
-                    setMetaDataUrl(apiData.url);
                     setSignature(apiData.signature);
+                    setApiMessage(apiData.message);
                     setIsError(false)
                     setIsLoading(false);
                     if (firstBlockNumber !== 0) {
@@ -72,11 +72,13 @@ export default function Main() {
 
                             <figure className="main-card__pic-preview">
 
-                                <Canvas height={400} width={400}
-                                    firstYear={firstYear} finalImage={imageBuffer}
-                                    metaDataUrl={metaDataUrl} signature={signature}
+                                <Canvas
+                                    height={450}
+                                    width={450}
+                                    finalImage={imageBuffer}
+                                    signature={signature}
+                                    apiMessage={apiMessage}
                                 />
-
 
                                 <figcaption>Mint Price:<span className="text-highlight"> ETH 0.05</span></figcaption>
                             </figure>
