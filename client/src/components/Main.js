@@ -5,7 +5,7 @@ import Canvas from './Canvas';
 
 export default function Main() {
     const [firstBlockNumber, setFirstBlockNumber] = useState(0);
-    const [firstBlockDate, setFirstBlockDate] = useState(null);
+    //const [firstBlockDate, setFirstBlockDate] = useState(null);
     const [firstYear, setFirstYear] = useState(null);
     const [metaDataUrl, setMetaDataUrl] = useState("");
     const [imageBuffer, setImageBuffer] = useState(null);
@@ -29,7 +29,7 @@ export default function Main() {
 
                     //set state from api call
                     setFirstBlockNumber(apiData.firstBlock);
-                    setFirstBlockDate(apiData.date);
+                    //setFirstBlockDate(apiData.date);
                     setFirstYear(apiData.firstYear);
                     setImageBuffer(apiData.image.data)
                     setMetaDataUrl(apiData.url);
@@ -65,14 +65,14 @@ export default function Main() {
                             <p className="main-card__first-date">First Block Number:
                                 <span className="text-highlight">{firstBlockNumber}</span></p>
 
-                            <p className="main-card__first-date">First Transaction Date:
-                                <span className="text-highlight"><br />{firstBlockDate}</span></p>
+                            <p className="main-card__first-date">First Transaction Year:
+                                <span className="text-highlight"><br />{firstYear}</span></p>
 
                             <span className="nft-preview"><p>NFT Preview</p></span>
 
                             <figure className="main-card__pic-preview">
 
-                                <Canvas height={400} width={400} firstBlockDate={firstBlockDate}
+                                <Canvas height={400} width={400}
                                     firstYear={firstYear} finalImage={imageBuffer}
                                     metaDataUrl={metaDataUrl} signature={signature}
                                 />

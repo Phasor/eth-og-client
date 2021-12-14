@@ -4,9 +4,9 @@ import { useWeb3React } from '@web3-react/core';
 import { ethers } from 'ethers';
 import ABI from '../abi';
 
-export default function Mint({ metaDataUrl, signature }) {
+export default function Mint({ metaDataUrl, signature, firstYear }) {
     const { account, active } = useWeb3React();
-    const ContractAddress = '0xCBFbbcfDBaF4E8944fbdC791493a149B45129F8A'; // Rinkeby
+    const ContractAddress = '0x41ee3B75B5fc655e64Ed95C18366BcbDE78E15B2'; // Rinkeby
     const mintContract = useContract(ContractAddress, ABI);
     const [isLoading, setIsLoading] = useState(false);
     const [success, setSuccess] = useState(false);
@@ -41,11 +41,11 @@ export default function Mint({ metaDataUrl, signature }) {
 
             //mint the NFT
             if (owner === account) {
-                const tx = await mintContract.mint(account, 1, metaDataUrl, signature); //free mint for owner
+                const tx = await mintContract.mint(account, 1, metaDataUrl, signature, firstYear); //free mint for owner
                 setTxHash(tx.hash);
             }
             else { // have to pay the mint fee
-                const tx = await mintContract.mint(account, 1, metaDataUrl, signature, { value: ethers.utils.parseEther("0.05") });
+                const tx = await mintContract.mint(account, 1, metaDataUrl, signature, firstYear, { value: ethers.utils.parseEther("0.05") });
                 setTxHash(tx.hash);
             }
 

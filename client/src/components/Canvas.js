@@ -1,7 +1,7 @@
 
 import Mint from './Mint';
 
-export default function Canvas({ finalImage, metaDataUrl, signature }) {
+export default function Canvas({ finalImage, metaDataUrl, signature, firstYear }) {
 
     //convert image buffer to base64 string
     const base64String = btoa(String.fromCharCode(...new Uint8Array(finalImage)));
@@ -9,7 +9,7 @@ export default function Canvas({ finalImage, metaDataUrl, signature }) {
     return (
         <div className="canvas-section">
             <img src={`data:image/png;base64,${base64String}`} alt="NFT preview" />
-            <Mint metaDataUrl={metaDataUrl} signature={signature} />
+            <Mint metaDataUrl={metaDataUrl} signature={signature} firstYear={firstYear} />
         </div>
     )
 }

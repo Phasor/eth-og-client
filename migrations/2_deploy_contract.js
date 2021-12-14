@@ -1,5 +1,5 @@
-const NFT = artifacts.require("NFT");
+const EthOG = artifacts.require("EthOG");
 
 module.exports = function (deployer) {
-    deployer.deploy(NFT, "NFT", "NFT");
+    deployer.deploy(EthOG, "EthOG", "EthOG");
 };

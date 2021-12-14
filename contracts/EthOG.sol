@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 /// @author Phas0r
 /// @notice You can use this contract to mint an NFT that shows when you first interacted with Eth mainnet using a metamask wallet
 /// @custom:experimental This is an experimental contract.
-contract NFT is ERC721Enumerable, Ownable {
+contract EthOG is ERC721Enumerable, Ownable {
   
   using Strings for uint256;
   uint256 public cost = 0.05 ether;
@@ -17,13 +17,24 @@ contract NFT is ERC721Enumerable, Ownable {
   bool public paused = false;
   mapping(address => bool) public whitelisted;
   mapping(uint256 => string) public tokenURIMapping; //tokenID to tokenURI 
+  mapping(uint256 => uint256 ) public mintedByVintage; // number of mints per vintage so far
   address public apiAddress = 0x14791697260E4c9A71f18484C9f997B308e59325; //back-end api public key, used for authorisation
+  uint256 public hardCapByVintage = 2000;
 
   constructor(
     string memory _name,
     string memory _symbol
   ) ERC721(_name, _symbol) {
-    //mint(msg.sender, 1); 
+    //initialise supply
+    mintedByVintage[2015] = 0;
+    mintedByVintage[2016] = 0;
+    mintedByVintage[2017] = 0;
+    mintedByVintage[2018] = 0;
+    mintedByVintage[2019] = 0;
+    mintedByVintage[2020] = 0;
+    mintedByVintage[2021] = 0;
+    mintedByVintage[2022] = 0;
+    mintedByVintage[2023] = 0;
   }
 
   /// @notice main function that mints the NFT
@@ -31,15 +42,18 @@ contract NFT is ERC721Enumerable, Ownable {
   /// @param _metaDataURI The URL where the metadata for the NFT is hosted
   /// @param _mintAmount must be 1
   /// @param sig = the cryptographic signature from our api
+  /// @param year = the year the address first did a transaction
   function mint(
     address _to, 
     uint256 _mintAmount, 
     string memory _metaDataURI, 
-    bytes memory sig) 
+    bytes memory sig,
+    uint256 year) 
     public payable {
     uint256 supply = totalSupply(); //current number minted to date
     require(!paused);
     require(checkSigner(_metaDataURI,sig) == true); //check metadata url is authentic and from our api
+    require(mintedByVintage[year] <= hardCapByVintage);
     require(_mintAmount > 0);
     require(_mintAmount <= maxMintAmount);
 
@@ -51,6 +65,7 @@ contract NFT is ERC721Enumerable, Ownable {
 
     for (uint256 i = 1; i <= _mintAmount; i++) {
       tokenURIMapping[supply + i] = _metaDataURI; 
+      mintedByVintage[year] += 1; 
       _safeMint(_to, supply + i); 
     }
   }
@@ -108,6 +123,11 @@ contract NFT is ERC721Enumerable, Ownable {
   /// @dev stops the contract minting when true
   function pause(bool _state) public onlyOwner {
     paused = _state;
+  }
+
+  /// @dev updates the supply by vintage, not the cap for the overall collection
+  function changeVintageSupplyCap(uint256 newCap) public onlyOwner {
+    hardCapByVintage = newCap;
   }
  
   /// @notice adds an address to the whitelist. Whitelisted addresses can mint for free.

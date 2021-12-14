@@ -13,6 +13,9 @@ export default function FAQ() {
                     <li>What chain is this project on?</li>
                     <br />
                     <p>Ethereum.</p>
+                    <li>How many NFTs can be minted?</li>
+                    <br />
+                    <p>2000 NFTs per year long cohort can be minted i.e. 2000 from wallets first connected in 2015, 2000 from 2016, 2000 from 2017 etc. 2000 Will be added every year.</p>
                     <li>Is there any utility?</li>
                     <br />
                     <p>After 1,000 mints have been sold, we will commit to providing 3d metaverse-ready models of each item so that your avatar can flex your Eth OG status in the metaverse (Sandbox, Cryptovoxels)! </p>
