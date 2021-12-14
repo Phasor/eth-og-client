@@ -5,7 +5,6 @@ import Canvas from './Canvas';
 
 export default function Main() {
     const [firstBlockNumber, setFirstBlockNumber] = useState(0);
-    //const [firstBlockDate, setFirstBlockDate] = useState(null);
     const [firstYear, setFirstYear] = useState(null);
     const [apiMessage, setApiMessage] = useState(null);
     const [imageBuffer, setImageBuffer] = useState(null);
@@ -14,22 +13,25 @@ export default function Main() {
     const [Error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [isDataLoaded, setIsDataLoaded] = useState(false);
-    const { active, account } = useWeb3React();
+    const { active, account, chainId } = useWeb3React();
 
     useEffect(() => {
         const getData = async () => {
 
             if (active) {
+
                 try {
                     setIsLoading(true);
                     const API_URL = `http://localhost:4000/api/url/?add=${account}&key=${process.env.REACT_APP_API_KEY}`;
                     const apiResponse = await fetch(API_URL);
+                    if (!apiResponse.ok) {
+                        throw new Error('Network response was not OK');
+                    }
                     const apiData = await apiResponse.json();
                     console.log(apiData);
 
                     //set state from api call
                     setFirstBlockNumber(apiData.firstBlock);
-                    //setFirstBlockDate(apiData.date);
                     setFirstYear(apiData.firstYear);
                     setImageBuffer(apiData.image.data)
                     setSignature(apiData.signature);
@@ -41,16 +43,16 @@ export default function Main() {
                     }
                 }
                 catch (error) {
-                    console.log(error);
+                    console.error('There has been a problem with your fetch operation:', error);
                     setIsError(true);
                     setIsLoading(false);
-                    setError(error);
+                    setError("API failed to fetch");
                 }
             }
         }
         getData();
 
-    }, [account, firstBlockNumber, active])
+    }, [account, firstBlockNumber, active, Error])
 
     return (
         <div className="main">
@@ -58,7 +60,8 @@ export default function Main() {
                 <Card>
 
                     {!active && <p>Please Connect MetaMask to Rinkeby.</p>}
-                    {isError && <p>Something went wrong.{Error}</p>}
+                    {(chainId !== 4) && <p className="main-card__wrong-chain">Wrong Chain. Please connect to Rinkeby.</p>}
+                    {isError && <p>{Error}</p>}
                     {isLoading && <div>Loading..</div>}
                     {isDataLoaded && active && (
                         <>

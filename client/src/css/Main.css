@@ -15,6 +15,10 @@
     padding:0;
 }
 
+.main-card__wrong-chain{
+    color: red;
+}
+
 .text-highlight{
     color:#696969;
     margin-left: 10px;
