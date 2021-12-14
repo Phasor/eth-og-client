@@ -30,8 +30,10 @@ export default function Mint({ signature, apiMessage }) {
     async function MintNFT() {
         try {
             setIsLoading(true);
+
             //register transfer event from smart contract
-            mintContract.on("Transfer", (from, to, tokenID) => {
+            mintContract.removeAllListeners();
+            mintContract.on("Transfer", () => {
                 setSuccess(true);
                 setIsLoading(false);
             })
@@ -53,7 +55,7 @@ export default function Mint({ signature, apiMessage }) {
         catch (error) {
             console.log(error);
             setErrorStatus(true);
-            setTxError(error);
+            setTxError("failed to mint");
         }
     }
 
