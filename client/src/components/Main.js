@@ -60,7 +60,7 @@ export default function Main() {
                 <Card>
 
                     {!active && <p>Please Connect MetaMask to Rinkeby.</p>}
-                    {(chainId !== 4) && <p className="main-card__wrong-chain">Wrong Chain. Please connect to Rinkeby.</p>}
+                    {active && (chainId !== 4) && <p className="main-card__wrong-chain">Wrong Chain. Please connect to Rinkeby.</p>}
                     {isError && <p>{Error}</p>}
                     {isLoading && <div>Loading..</div>}
                     {isDataLoaded && active && (
