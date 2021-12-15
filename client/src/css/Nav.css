@@ -6,9 +6,17 @@
 .nav-container{
     display: flex;
     flex-flow: row wrap;
-    justify-content:flex-end;
-    width: 1200px;
+    justify-content:space-between;
+    width: 75%;
     margin: 0 auto;
+}
+
+.nav-images{
+
+}
+
+.nav-images__eyes{
+    margin-left: 40px;
 }
 
 
