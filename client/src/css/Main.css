@@ -4,10 +4,15 @@
     width:100%
 }
 .main-container{
-    width: 500px;
+    width: 550px;
     margin:0px auto;
     margin-top: 20px;
 }
+
+.main-card__pic-preview {
+    margin: auto;
+}
+
 
 
 .main-container figure{
@@ -20,7 +25,7 @@
 }
 
 .text-highlight{
-    color:#696969;
+    color:#525aff;
     margin-left: 10px;
 }
 

@@ -69,13 +69,13 @@ export default function Main() {
                                 <span className="text-highlight">{firstBlockNumber}</span></p>
 
                             <p className="main-card__first-date">First Transaction Year:
-                                <span className="text-highlight"><br />{firstYear}</span></p>
+                                <span className="text-highlight">{firstYear}</span></p>
 
                             <span className="nft-preview"><p>NFT Preview</p></span>
 
                             <figure className="main-card__pic-preview">
 
-                                <Canvas
+                                <Canvas className="main-card__pic-preview-nft"
                                     height={450}
                                     width={450}
                                     finalImage={imageBuffer}

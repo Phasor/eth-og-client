@@ -9,5 +9,8 @@ canvas{
     align-content: center;
 }
 
+.canvas-section img{
+    margin: 0px auto;
+}
 
 
