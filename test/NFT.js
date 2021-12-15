@@ -205,8 +205,33 @@ contract("EthOG", function (accounts) {
 
   });
 
+  //11. can remove addresses from white list
+  it("owner can remove addresses from white list", async () => {
+    //get the contract instance
+    const EthOGInstance = await EthOG.deployed();
 
+    //owner de-whitelists a non-owner user
+    EthOGInstance.removeWhitelistUser(accounts[1], { from: accounts[0] });
 
+    //non owner tries to mint the nft for free
+    await catchRevert(EthOGInstance.mint(
+      accounts[1],
+      1,
+      '2021ipfs://bafyreiar3gyursrpcazs5xsanervr3romibpxfsgcbrxm3ii4paaqai7vq/metadata.json',
+      '0x3ae5e5008363d47d7f2aa98250156c24b8e96f59f72702a6fe6555dd2e497e1c2c0b4862a023e7716871aff8a15aae13d92ea30f5f646e49f3331c1a41bf75791c',
+      { from: accounts[1], value: 0 }));
+  });
 
+  //12. should not let a user mint with incorrect signature
+  it("should not let a user mint with incorrect signature", async () => {
+    const EthOGInstance = await EthOG.deployed();
 
+    //mint the nft 
+    await catchRevert(EthOGInstance.mint(
+      accounts[0],
+      1,
+      '2021ipfs://bafyreiar3gyursrpcazs5xsanervr3romibpxfsgcbrxm3ii4paaqai7vq/metadata.json',
+      '0x3ae5e5008363d47d7f2aa98250156c24b8e9',
+      { from: accounts[0] }));
+  });
 });
