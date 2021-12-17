@@ -14,6 +14,7 @@ export default function Main() {
     const [isLoading, setIsLoading] = useState(false);
     const [isDataLoaded, setIsDataLoaded] = useState(false);
     const { active, account, chainId } = useWeb3React();
+    const API_BASE = 'https://ethog.herokuapp.com/api/url/?add=';
 
     useEffect(() => {
         const getData = async () => {
@@ -22,7 +23,8 @@ export default function Main() {
 
                 try {
                     setIsLoading(true);
-                    const API_URL = `http://localhost:4000/api/url/?add=${account}&key=${process.env.REACT_APP_API_KEY}`;
+                    //const API_URL = `http://localhost:4000/api/url/?add=${account}&key=${process.env.REACT_APP_API_KEY}`;
+                    const API_URL = `${API_BASE}+${account}&key=${process.env.REACT_APP_API_KEY}`;
                     const apiResponse = await fetch(API_URL);
                     if (!apiResponse.ok) {
                         throw new Error('Network response was not OK');

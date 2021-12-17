@@ -6,7 +6,7 @@ import ABI from '../abi';
 
 export default function Mint({ signature, apiMessage }) {
     const { account, active } = useWeb3React();
-    const ContractAddress = '0xE2e6e3F686727193a8da910FDccf387fB2CC1C1c'; // Rinkeby
+    const ContractAddress = '0x1240c96D19F298B8B75A06471C03539Aef0Eba77'; // Rinkeby
     const mintContract = useContract(ContractAddress, ABI);
     const [isLoading, setIsLoading] = useState(false);
     const [success, setSuccess] = useState(false);
