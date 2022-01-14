@@ -4,7 +4,7 @@ export default function Intro() {
     return (
         <div className="intro__container">
             <div className="intro__text-container">
-                <h5>- Eth OG -</h5>
+                <h5>* Eth OG *</h5>
                 <p>Welcome traveller...</p>
                 <p>This place is for those who wish to prove they are true and worthy OG's of Ethereum.</p>
                 <p>But, how to tell?</p>
